@@ -4,129 +4,71 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>230</x>
-      <y>290</y>
-      <w>330</w>
-      <h>90</h>
+      <x>470</x>
+      <y>440</y>
+      <w>180</w>
+      <h>120</h>
     </coordinates>
-    <panel_attributes>Node (Slave)
+    <panel_attributes>Node
 --
-description
+id
+ip address
+hostname
 status
-systemInfo: SystemInfo</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>230</x>
-      <y>60</y>
-      <w>210</w>
-      <h>150</h>
-    </coordinates>
-    <panel_attributes>Container
---
-image
-internal_ip
-status
-ports
-networks
-volumes
-dockerfile</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>290</x>
-      <y>470</y>
-      <w>210</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Swarm Master</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>600</x>
-      <y>470</y>
-      <w>210</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Authorized User
+resources
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>380</x>
-      <y>370</y>
-      <w>100</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes>lt=-
-m1=1
-m2=*
-Manages ^</panel_attributes>
-    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>490</x>
-      <y>470</y>
-      <w>130</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>lt=-
-m1=1
-m2=*
-&lt; Uses</panel_attributes>
-    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>320</x>
-      <y>200</y>
-      <w>80</w>
-      <h>110</h>
-    </coordinates>
-    <panel_attributes>lt=-
-m1=*
-m2=1
-Runs ^</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>610</x>
-      <y>240</y>
-      <w>290</w>
-      <h>200</h>
+      <x>770</x>
+      <y>420</y>
+      <w>180</w>
+      <h>170</h>
     </coordinates>
-    <panel_attributes>SystemInfo
+    <panel_attributes>Service
 --
-public_ip
-private_ip
-hostname
-cpu_info
-total_ram
-average_utilized_ram
-total_disk
-used_disk
-total_swap
-average_used_swap</panel_attributes>
+id
+name
+image
+mode
+replicas
+ports
+volumes
+networks</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
-      <y>50</y>
+      <x>780</x>
+      <y>670</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Swarm Manager
+--
+docks port</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>670</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Worker
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1050</x>
+      <y>500</y>
       <w>210</w>
       <h>50</h>
     </coordinates>
@@ -136,8 +78,8 @@ average_used_swap</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
-      <y>130</y>
+      <x>1050</x>
+      <y>430</y>
       <w>210</w>
       <h>50</h>
     </coordinates>
@@ -145,40 +87,136 @@ average_used_swap</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>210</y>
+      <w>180</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Stack
+--
+docker-compose file</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
     <id>Relation</id>
     <coordinates>
-      <x>550</x>
+      <x>850</x>
       <y>330</y>
-      <w>80</w>
-      <h>30</h>
+      <w>50</w>
+      <h>110</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=0..*
+m2=1..*
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
-      <y>130</y>
-      <w>80</w>
-      <h>180</h>
+      <x>940</x>
+      <y>430</y>
+      <w>130</w>
+      <h>50</h>
     </coordinates>
-    <panel_attributes>lt=-
-r1=*
-r2=1</panel_attributes>
-    <additional_attributes>60.0;20.0;10.0;20.0;10.0;160.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=0..*
+</panel_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>470</x>
-      <y>50</y>
-      <w>100</w>
-      <h>260</h>
+      <x>940</x>
+      <y>500</y>
+      <w>130</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=0..*
+</panel_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>550</y>
+      <w>370</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;350.0;80.0;350.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>550</y>
+      <w>30</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>490</y>
+      <w>150</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
-r1=*
-r2=1</panel_attributes>
-    <additional_attributes>80.0;20.0;10.0;20.0;10.0;240.0</additional_attributes>
+m1=0..*
+m2=1..*
+Runs &gt;</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1130</x>
+      <y>670</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Authorized User
+--
+username
+password</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>980</x>
+      <y>690</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+&lt; Controls</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>690</y>
+      <w>160</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1
+&lt; Manages</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
   </element>
 </diagram>
