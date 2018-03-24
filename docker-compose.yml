@@ -2,7 +2,7 @@ version: "3"
 services:
 
   docks:
-    image: tripleparity/docks:docker-hub
+    image: tripleparity/docks:latest
     container_name: docks
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -10,7 +10,7 @@ services:
       - 8080:8080
 
   docks-ui:
-    image: tripleparity/docks-ui:docker-hub
+    image: tripleparity/docks-ui:latest
     container_name: docks-ui
     ports:
       - 4200:80
