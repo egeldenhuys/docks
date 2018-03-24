@@ -11,6 +11,7 @@ Docks consists of two main components:
 1. [Install Docker](https://docs.docker.com/install/)
 2. [Install Docker Compose](https://docs.docker.com/compose/install/)
 3. Run `sudo docker-compose up` in the docks-demo git directory
+  - **Note**: Docker has to download a large amount of data. The process can take up to 30 minutes depending on your internet speed.
 4. Browse to http://127.0.0.1:4200 to access the web interface. The API will be running on port `8080`
 
 ## Warning
