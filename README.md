@@ -4,8 +4,8 @@ Docks provides a web interface for managing a [Docker Swarm](https://docs.docker
 
 
 Docks consists of two main components:
-- `docks` - REST API to communicate with Docker running on the Swarm Manager
-- `docks-ui` - Web interface which communicates with the Docks API to manage the Swarm
+- [docks](https://github.com/TripleParity/docks) - REST API to communicate with Docker running on the Swarm Manager
+- [docks-ui](https://github.com/TripleParity/docks-ui) - Web interface which communicates with the Docks API to manage the Swarm
 
 ## Usage Instructions
 1. [Install Docker](https://docs.docker.com/install/)
@@ -15,6 +15,6 @@ Docks consists of two main components:
 
 ## Warning
 The API currently exposes the Docker API without authentication.
-Whoever has access to port `8080` on your computer will effectively have root access.
+Whoever has access to port `8080` or `4200` will effectively have root access.
 
 This will change in the future.
