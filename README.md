@@ -12,7 +12,9 @@ Docks consists of two main components:
 2. [Install Docker Compose](https://docs.docker.com/compose/install/)
 3. Run `sudo docker-compose up` in the docks-demo git directory
   - **Note**: Docker has to download a large amount of data. The process can take up to 30 minutes depending on your internet speed.
+  - `sudo docker-compose up -d` can be used to run the containers in the background
 4. Browse to http://127.0.0.1:4200 to access the web interface. The API will be running on port `8080`
+5. Run `sudo docker-compose down` to stop the running containers
 
 ## Warning
 The API currently exposes the Docker API without authentication.
