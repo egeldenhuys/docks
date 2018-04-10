@@ -14,6 +14,14 @@ Docks provides a web interface for managing a Docker Swarm using
 the Docker API. Docks builds on the Docker API to provide
 visualisations of the Docker Swarm.
 
+## Architecture
+Docks consists of two main sub systems:
+- Docks API
+- Docks UI
+
+The Docks UI subsystem will have a N-Tier architecture. It consists of components
+that deligate...
+
 ## Requirements
 1. Authentication - A user must be authenticated and authorized
 before interacting with the Docks API
