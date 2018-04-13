@@ -4,6 +4,8 @@
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{float}
+
 \hypersetup{
 	colorlinks=true,
 	linkcolor=blue,
@@ -54,9 +56,47 @@ The Docks API server has to be on a Manager Node in the Docker Swarm to be able 
 
 
 \section{Getting Started}
+When using the docks-demo repository the UI will be available at \url{http://127.0.0.1:4200} after following the Installation instructions.
+
+You will be presented with the following login screen:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{manual_login.png}
+	\caption{Docks Login Screen}
+\end{figure}
+
+Default credentials:
+\begin{itemize}
+	\item Username: "admin"
+	\item password: "admin"
+\end{itemize}
+
+After logging in you will be presented with the Dashboard:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{manual_nav.png}
+	\caption{Dashboard Navigation bar}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{manual_nav_select.png}
+	\caption{Views}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{manual_containers.png}
+	\caption{Running containers}
+\end{figure}
 
 \section{Using the System}
-
+\begin{itemize}
+	\item Containers can be stopped by clicking the stop button. Simple.
+	\item Containers can be removed by clicking the Remove button. Simple, again.
+	\item More functionality will be added in future releases
+\end{itemize}
 \section{Troubleshooting}
 
 \end{document}
