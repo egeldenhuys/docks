@@ -5,6 +5,11 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{float}
+\usepackage{listings}
+\lstset{
+	language=bash,
+	basicstyle=\ttfamily
+}
 
 \hypersetup{
 	colorlinks=true,
@@ -38,7 +43,7 @@ The Docks API server has to be on a Manager Node in the Docker Swarm to be able 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.5]{deployment-diagram.png}
+	\includegraphics[scale=0.5]{pretty-docks.png}
 \end{figure}
 
 \pagebreak
@@ -60,7 +65,7 @@ When using the docks-demo repository the UI will be available at \url{http://127
 
 You will be presented with the following login screen:
 
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.5]{manual_login.png}
 	\caption{Docks Login Screen}
@@ -85,6 +90,8 @@ After logging in you will be presented with the Dashboard:
 	\caption{Views}
 \end{figure}
 
+The containers view will show running and stopped containers.
+From this view you can start and stop existing containers or remove them.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{manual_containers.png}
@@ -92,11 +99,53 @@ After logging in you will be presented with the Dashboard:
 \end{figure}
 
 \section{Using the System}
-\begin{itemize}
-	\item Containers can be stopped by clicking the stop button. Simple.
-	\item Containers can be removed by clicking the Remove button. Simple, again.
-	\item More functionality will be added in future releases
-\end{itemize}
+\subsection{Managing Containers}
+\subsubsection{Start and Stop container}
+From the containers view, you can start existing containers that are not running
+or stop running containers. This is useful if you no longer require the service running in the container but want to keep it around.
+
+\subsubsection{Remove containers}
+If you no longer need the service provided by the container, or the data in the container layer (data in volumes will not be deleted) then you can click on the "Remove" button to remove the container from the swarm. This cannot be undone.
+
+\subsection{Stacks}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{manual_stacks.png}
+	\caption{Stacks Dashboard}
+\end{figure}
+
+You can paste a \emph{docker-compose.yml} file into the text box. The 'Create Stack' button will deploy the stack to the Docker Swarm. You can then manage the containers in the Containers dashboard.
+
+\subsection{Updating Docks}
+The current process to update Docks is to run 
+
+\begin{lstlisting}
+docker-compose pull
+\end{lstlisting}
+
+and then
+
+\begin{lstlisting}
+docker-compose up --force-recreate
+\end{lstlisting}
+
 \section{Troubleshooting}
+\subsection{Error: bind: address already in use}
+Another service is most likely running on port 4200 or 8080. The ports for Docks
+can be specified in the \emph{docker-compose.yml} file by changing for example
+
+\begin{lstlisting}
+    ports:
+      - 4200:80
+\end{lstlisting}
+to
+\begin{lstlisting}
+    ports:
+      - 7000:80
+\end{lstlisting}
+to run on port 7000 on the host machine.
+
+\subsection{404 Not Found}
+URLS such as \url{http://127.0.0.1:4200/index} cannot be directly visited, you first need to visit \url{http://127.0.0.1:4200}
 
 \end{document}
