@@ -1,7 +1,7 @@
 version: "3"
 services:
-  
-  docks:
+
+  docks-api:
     image: tripleparity/docks-api:latest
     container_name: docks-api
     volumes:

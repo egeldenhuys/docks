@@ -2,7 +2,7 @@
 
 Docks provides a web interface for managing a [Docker Swarm](https://docs.docker.com/engine/swarm/key-concepts/).
 
-For system documentation see [docs-bin](https://github.com/TripleParity/docs)
+For system and architecture documentation see [docs-bin](https://github.com/TripleParity/docs)
 
 Docks consists of two components:
 - [docks-api](https://github.com/TripleParity/docks-api) - REST API to communicate with Docker Engine running on the Swarm Manager
