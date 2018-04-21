@@ -11,10 +11,12 @@
 	basicstyle=\ttfamily
 }
 
+\graphicspath{{images/user-manual-images/}}
+
 \hypersetup{
 	colorlinks=true,
 	linkcolor=blue,
-	filecolor=magenta,      
+	filecolor=magenta,
 	urlcolor=cyan,
 }
 
@@ -24,7 +26,7 @@
 \date{}
 
 \begin{document}
-	
+
 \maketitle
 
 \tableofcontents
@@ -43,7 +45,7 @@ The Docks API server has to be on a Manager Node in the Docker Swarm to be able 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.5]{pretty-docks.png}
+	\includegraphics[scale=0.5]{pretty_docks.png}
 \end{figure}
 
 \pagebreak
@@ -117,7 +119,7 @@ If you no longer need the service provided by the container, or the data in the 
 You can paste a \emph{docker-compose.yml} file into the text box. The 'Create Stack' button will deploy the stack to the Docker Swarm. You can then manage the containers in the Containers dashboard.
 
 \subsection{Updating Docks}
-The current process to update Docks is to run 
+The current process to update Docks is to run
 
 \begin{lstlisting}
 docker-compose pull

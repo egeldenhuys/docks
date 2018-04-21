@@ -1,0 +1,15 @@
+sudo: required
+language: ruby
+services:
+- docker
+before_install:
+- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended
+  texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended latex-xcolor
+  pgf
+install:
+- docker pull egeldenhuys/umlet-docker
+script:
+- bash ./scripts/build.sh $TRAVIS_BUILD_DIR out
+env:
+  global:
+  - secure: p03lR/vSy0vB4P19uc4xCHH0FJbpAxFkzhCcKox8oNu9YOIypODa9JVrmRxmRFuqMh8fFLGQe4Xgtm8mm4wwjRvBl+saoY1QqA2Ve76T5k7BOmUSOU9FxDklv3yQVKua179WMyOZfzD+qW6QBy/fnUE7peabhKixtEFqOwAtmWe2peicxEepI/rpRwKaKJ3DO75fiuJFBTSAVtnoeIhs4EBNGoyTtEMHDyDNkhep1pGao3lKUKT6FKjc77RAuocVOKdZon/Q65yThu3dkZCHEb8x40diM9ciFs6F7jFpVRbx4ICibPjjoyExhik5f11T6Gl13VnG0Tb957QASnINUrwA/eVV/gSp0gEiL7XjYqZ8IGO7TyVILIQMRFIn5qlXkMLXJhLwfp6k/LpoW7vW7SOyv+2ID7rMa/Ag7ZpJDuTOTOurRrmf2B3uXP8xya38CqaHSFOJoPsP0T6CLs/A1ZqNBzsqjqrV9Ao4ExlSi46RyxGqjrODjbEZtCsQlJEAy0asv4beYwH9vgANqt8aVgkvDQIv6R31F+qmHif5ci68oryZVfjMSN0DhXQ2/eUbWrMdm9s8yjRCTZ29loBqWrSQqoyZKY/SO4sU/dWKS+5/0gK9Px/VjejlW80HbaqDKg9cph1kIW8aiJxgf+Uv//LjfxcKIUQLkebJ3/qvElg=

@@ -3,6 +3,7 @@
 
 \usepackage{enumitem}
 \usepackage{graphicx}
+\graphicspath{{images/uml/}}
 
 %opening
 \title{Docks Requirements and Design}
@@ -72,7 +73,7 @@ Due to the power the Docks system exposes only Authorized users should be able t
 			\item R1.3.1 Start and Stop containers
 			\item R1.3.2 Remove containers
 			\item R1.3.3 Deploy and remove Stacks
-			\item R1.3.4 Full privileges to manage the system and other users 
+			\item R1.3.4 Full privileges to manage the system and other users
 		\end{itemize}
 	\item R1.4 The system shall provide the following user management features for administrative accounts
 		\begin{itemize}
@@ -113,7 +114,7 @@ Docks needs to provide features for managing the Docker Swarm. While it is alrea
 \subsection{Subsystems}
 The Docks system consists of two main subsystems. The Docks API Server and the Docks UI.
 \subsubsection{Docks API Server}
-The Docks API Server acts as a middleman between the UI and the Docker API running on the Manager Node. The Docks API also adds a layer of authentication and session management over the Docker API. 
+The Docks API Server acts as a middleman between the UI and the Docker API running on the Manager Node. The Docks API also adds a layer of authentication and session management over the Docker API.
 
 \subsubsection{Docks UI}
 Docks UI is the web interface for managing the Docker Swarm through the Docks API. It consumes the API provided by the Docks API server.
@@ -148,4 +149,3 @@ The User Interface uses the Model View Controller architecture. Nodes and Contai
 
 
 \end{document}
-
