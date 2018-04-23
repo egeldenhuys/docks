@@ -1,5 +1,4 @@
-images/uml/*
-out/*
+*/build/*
 *.pdf
 *.toc
 *.aux
