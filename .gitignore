@@ -1,4 +1,5 @@
-*/build/*
+*/build/
+/docs/images/uml/
 *.pdf
 *.toc
 *.aux
