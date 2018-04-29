@@ -59,3 +59,9 @@ service itself.
 We can either duplicate the Docker state in the Database, or query Docker
 when a user wants to manage something. Query at time of management would
 be simplest to implement.
+
+## Further Reading
+- [authobot](https://github.com/ndeloof/authobot)
+- [Docker Run Reference - Security Configuration](https://docs.docker.com/engine/reference/run/#security-configuration)
+- [Authentication Cheat Sheet](https://www.owasp.org/index.php/Authentication_Cheat_Sheet)
+- [Password Storage Cheat Sheet](https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet)
