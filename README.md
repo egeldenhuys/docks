@@ -2,8 +2,7 @@
 
 A project developed by team TripleParity
 
-<a href="https://app.zenhub.com/workspace/o/tripleparity/docks/boards?repos=126592937,124921284,125188117,124847715,128764372,124747738" target="_blank">
-![ZenHub Badge](https://img.shields.io/badge/Shipping_faster_with-ZenHub-5e60ba.svg?style=flat-square)</a>
+<a href="https://app.zenhub.com/workspace/o/tripleparity/docks/boards?repos=126592937,124921284,125188117,124847715,128764372,124747738" target="_blank"> ![ZenHub Badge](https://img.shields.io/badge/Shipping_faster_with-ZenHub-5e60ba.svg?style=flat-square)</a>
 
 **Docks** provides a simple web interface for managing a Docker Swarm.
 It allows you to view the status of the Swarm and the services running on it.
