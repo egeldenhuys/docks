@@ -3,7 +3,6 @@ services:
 
   docks-api:
     image: tripleparity/docks-api:latest
-    container_name: docks-api
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
@@ -11,6 +10,5 @@ services:
 
   docks-ui:
     image: tripleparity/docks-ui:latest
-    container_name: docks-ui
     ports:
       - 4200:80
