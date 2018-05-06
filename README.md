@@ -22,13 +22,11 @@ private and public keys.
 - <a href="https://github.com/TripleParity/docks" target="_blank">docks</a> Connecting all things related to the project (start here)
   - <a href="https://travis-ci.org/TripleParity/docks" target="_blank">![Travis branch](https://img.shields.io/travis/TripleParity/docks/master.svg?label="Travis%20CI:%20master")</a>
 - <a href="https://github.com/TripleParity/docks-ui" target="_blank">docks-ui</a> - The web interface for communucating with the Docks API
-  - <a href="https://hub.docker.com/r/tripleparity/docks-ui/" target="_blank">![Docker Build Status](https://img.shields.io/docker/build/tripleparity/docks-ui.svg?label=Docker%20Hub%20Build)</a>
-  - <a href="https://travis-ci.org/TripleParity/docks-ui" target="_blank">![Travis branch](https://img.shields.io/travis/TripleParity/docks-ui/master.svg?label="Travis%20CI:%20master")</a>
-  - <a href="https://travis-ci.org/TripleParity/docks-ui" target="_blank">![Travis branch](https://img.shields.io/travis/TripleParity/docks-ui/develop.svg?label="Travis%20CI:%20develop")</a>
+  - <a href="https://travis-ci.org/TripleParity/docks-ui" target="_blank">![Travis master branch](https://img.shields.io/travis/TripleParity/docks-ui/master.svg?label="Travis%20CI:%20master")</a>
+  - <a href="https://travis-ci.org/TripleParity/docks-ui" target="_blank">![Travis develop branch](https://img.shields.io/travis/TripleParity/docks-ui/develop.svg?label="Travis%20CI:%20develop")</a>
 - <a href="https://github.com/TripleParity/docks-api" target="_blank">docks-api</a>- The Docks API that runs on the Docker Swarm Manager Node
-  - <a href="https://hub.docker.com/r/tripleparity/docks-api/" target="_blank">![Docker Build Status](https://img.shields.io/docker/build/tripleparity/docks-api.svg?label=Docker%20Hub%20Build)</a>
-  - <a href="https://travis-ci.org/TripleParity/docks-api" target="_blank">![Travis branch](https://img.shields.io/travis/TripleParity/docks-api/master.svg?label="Travis%20CI:%20master")</a>
-  - <a href="https://travis-ci.org/TripleParity/docks-api" target="_blank">![Travis branch](https://img.shields.io/travis/TripleParity/docks-api/develop.svg?label="Travis%20CI:%20develop")</a>
+  - <a href="https://travis-ci.org/TripleParity/docks-api" target="_blank">![Travis master branch](https://img.shields.io/travis/TripleParity/docks-api/master.svg?label="Travis%20CI:%20master")</a>
+  - <a href="https://travis-ci.org/TripleParity/docks-api" target="_blank">![Travis develop branch](https://img.shields.io/travis/TripleParity/docks-api/develop.svg?label="Travis%20CI:%20develop")</a>
 
 ### Documentation
 - <a href="https://github.com/TripleParity/docs-bin/blob/master/requirements.pdf" target="_blank">Requirements and Design</a>
