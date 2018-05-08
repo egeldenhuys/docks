@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>800</x>
+      <y>290</y>
+      <w>210</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>User
+--
+PK1 id: int
+username: string
+hash: string
+isAdmin: bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>150</x>
+      <y>290</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Team
+--
+PK1 id: int
+name: string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>290</y>
+      <w>210</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>TeamMembership
+--
+PK1 id: int
+FK1 teamId
+FK2 userId
+FK3 roleId</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>350</x>
+      <y>330</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..*</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>680</x>
+      <y>330</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>150</x>
+      <y>680</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Resource
+--
+PK1 id: int
+PK2 dockerId: string
+type: string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>150</x>
+      <y>490</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>TeamManagement
+--
+PK1 id: int
+FK1 teamId
+FK2 resourceId</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>450</x>
+      <y>710</y>
+      <w>310</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>bg=gray
+`type` = &lt;stack|service&gt;
+A stack can have the same
+name as a service id.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>350</x>
+      <y>740</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>380</y>
+      <w>60</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>580</y>
+      <w>60</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1..*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>470</x>
+      <y>490</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Role
+--
+PK1 id: int
+name: string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>810</x>
+      <y>640</y>
+      <w>310</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>bg=gray
+Roles:
+- admin
+- team_leader
+- super_user
+- normal_user
+- guest</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>180</x>
+      <y>70</y>
+      <w>540</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>bg=pink
+*Assumption: A team manages resources*
+
+A user cannot manage resources under their own name.
+
+An admin can still the administrative tasks without
+being part of a team, however all users need to be
+part of a team to create and manage resources.
+
+For example, you can have a team "administrators" and place
+all admins in this team. When they need to deploy an admin
+only service, they will do so under the "administrators" team.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>760</x>
+      <y>220</y>
+      <w>310</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>bg=gray
+The Administrator role is global.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>750</x>
+      <y>130</y>
+      <w>330</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>bg=gray
+Users that are not part of a team
+has the same permissions as a guest.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>700</x>
+      <y>800</y>
+      <w>440</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>bg=gray
+Permissions:
+- Create teams (admin)
+- Create users (admin)
+- Assign any permission (admin)
+- Add users to team (admin/team leader)
+- Assign permissions equal or lower (team leader)
+- Deploy without bind mounts (normal user)
+- Deploy with bind mounts (super user)
+- Inspect (normal user)
+- Read Only (guest)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>730</x>
+      <y>470</y>
+      <w>420</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>bg=pink
+*Assumption: A Team Leader can use bind mounts*
+
+Makes things easy for now.
+Alternative is to assign certain permissions
+individually to team leaders for more strict
+access control.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>400</y>
+      <w>60</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>520</y>
+      <w>80</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>880</x>
+      <y>250</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>650</x>
+      <y>560</y>
+      <w>180</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;80.0</additional_attributes>
+  </element>
+</diagram>
