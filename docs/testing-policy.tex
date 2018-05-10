@@ -54,9 +54,16 @@ processes are started:
 
 \subsubsection{Travis CI}
 The history of test reports for Travis CI can be viewed at \url{https://travis-ci.org/TripleParity/docks-ui/branches}.
-If the build was not successful it will be marked as 'failed'
+If the build was not successful it will be marked as 'failed' \\
+\\
+Travis CI is used for running tests associated with each repository. \\
+\\
+For the frontend Angular generates a set of tests for each component to verify
+that the component was successfully created. These tests run inside a
+headless (no screen required) Chrome browser.
 
-Travis CI is used for running tests associated with each repository
+The backend also has a suite of unit tests that are executed on Travis CI.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{travis_build_history.png}
