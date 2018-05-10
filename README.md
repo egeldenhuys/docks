@@ -1,3 +1,5 @@
+<p align="center"><img src=https://user-images.githubusercontent.com/17801831/39857782-e34fe272-5434-11e8-8aa7-fd5de8cbd55f.png width=300></p>
+
 # Docks
 
 A project developed by team TripleParity
