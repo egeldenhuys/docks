@@ -1,4 +1,4 @@
-<p align="center"><img src=https://user-images.githubusercontent.com/17801831/39857782-e34fe272-5434-11e8-8aa7-fd5de8cbd55f.png width=300></p>
+<p align="center"><img src=https://user-images.githubusercontent.com/17801831/39864667-a31702c4-544a-11e8-8f93-04c7f1dccb51.png width=200></p>
 
 # Docks
 
