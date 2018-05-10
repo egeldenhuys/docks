@@ -3,10 +3,13 @@
 
 \usepackage{enumitem}
 \usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+
 \graphicspath{{images/uml/}}
 
 %opening
-\title{Docks Requirements and Design}
+\title{Requirements and Design - Docks}
 \author{TripleParity}
 \date{}
 
@@ -14,16 +17,21 @@
 
 \maketitle
 
+
 \tableofcontents
+
+\pagebreak
+
 
 \section{Introduction}
 \subsection{Purpose}
-The purpose of this document is to enumerate the requirements of the project and also the architecture and design.
+The purpose of this document is to enumerate the requirements of the project and provide the design of the architecture.
 
 \subsection{Product Scope}
-Docks is a system to visualise a Docker Swarm. It's purpose is to provide a graphical interface to view and manage the Swarm that is easier and quicker to use than the Command Line Interface.
+Docks is a system to visualize a Docker Swarm. It's purpose is to provide a graphical interface to view and manage the Swarm that is easier and quicker to use than the Command Line Interface.
 
-The GUI will be in the form of a Web Application.
+The GUI will be in the form of a Web Application. This provides the benefit of managing the Docker swarm
+using any device that has a web browser.
 
 \section{Overall Description}
 \subsection{Product Perspective}
@@ -41,12 +49,14 @@ While it is possible to manage a Docker Swarm using the provided Command Line In
 A high level summary of the required functions provided by the graphical user interface.
 
 \begin{itemize}
-	\item All management and view operations require authentication and authorization
+	\item All management and view operations require authentication and the correct authorization
 	\item Fine-grain permission control for user accounts
+	\item Account roles with different permissions
 	\item View Docker Nodes that are part of the Swarm
-	\item View Docker containers running on Nodes in the Swarm
-	\item Start and stop containers
-	\item Remove containers from a Node
+	\item View Services that are running in the Swarm
+	\item View Tasks running in the Swarm
+	\item Start and stop services
+	\item Remove services
 	\item Deploy a Stack to the Swarm using a docker-compose file
 	\item Deploy a Service to the Swarm
 	\item View Networks in the Swarm
@@ -61,58 +71,95 @@ Since the frontend cannot securely interface with the Docker API, an intermediat
 \section{System Features}
 \subsection{Authentication and Authorization}
 \subsubsection{Description}
-Due to the power the Docks system exposes only Authorized users should be able to use the system. Permission for individual actions should be granted on a user basis.
+Due to the power the Docks system exposes only Authorized users should be able to use the system.
+Resources will be managed by Teams. Account roles are assigned in the context of a team, i.e A
+user can be a Guest in one team and a Super User in another team.
 
 \subsubsection{Functional Requirements}
 
 \begin{itemize}
 	\item R1.1 The system shall allow an authorized user to interact with the Docks API
-	\item R1.2 The system shall allow a user to perform actions only where authority for those actions have been granted.
-	\item R1.3 The system shall provide the following permissions that can be granted to a user:
+	\item R1.2 The system shall allow a user to perform actions only when they are authorized to do so. 
+	\item R1.3 The system shall provide a global administrative account role without restrictions
+	\item R1.4 The system shall provide Teams
+	\item R1.5 The system shall provide the ability to add Users to Teams
+	\item R1.6 The system shall only allow a User to manage resources that are part of their team.
+	\item R1.7 The system shall provide the following account roles within Teams: (Role (Permissions))
+	\begin{itemize}
+		\item R1.7.1 Team Leader
+		\item R1.7.2 Super User
+		\item R1.7.3 Normal User
+		\item R1.7.4 Guest
+	\end{itemize}
+	\item R1.8 Roles shall have the following permissions:
 		\begin{itemize}
-			\item R1.3.1 Start and Stop containers
-			\item R1.3.2 Remove containers
-			\item R1.3.3 Deploy and remove Stacks
-			\item R1.3.4 Full privileges to manage the system and other users
+			\item R1.8.1 Team Leader
+			\begin{itemize}
+				\item Add users to team
+				\item Bind Mount
+				\item Deploy Resources
+			\end{itemize}
+		\item R1.8.2 Super User
+			\begin{itemize}
+				\item Bind Mount
+				\item Deploy Resources
+			\end{itemize}
+		\item R1.8.3 Normal User
+			\begin{itemize}
+				\item Deploy Resources
+			\end{itemize}
+		\item R1.8.4 Guest
+			\begin{itemize}
+				\item Read only access. No access to Inspect
+			\end{itemize}
 		\end{itemize}
-	\item R1.4 The system shall provide the following user management features for administrative accounts
+	\item R1.9 The system shall provide the following user management features to be used by administrative accounts
 		\begin{itemize}
-			\item R1.4.1 Create new user
-			\item R1.4.2 Remove user
-			\item R1.4.3 Update user details
-			\item R1.4.4 Set permissions as stated in R1.3
+			\item R1.9.1 Create new user
+			\item R1.9.2 Remove user
+			\item R1.9.3 Update user password
+			\item R1.9.4 Set permissions as stated in R1.3
 		\end{itemize}
 \end{itemize}
 
 \subsection{Docker Swarm Management}
 \subsubsection{Description}
-Docks needs to provide features for managing the Docker Swarm. While it is already possible to fully mange the Docker Swarm using the Command Line Interface, Docks will provide a simplified interface.
+Docks needs to provide features for managing the Docker Swarm. While it is already possible to fully mange the Docker Swarm using the Command Line Interface, Docks will provide a simplified web interface.
 
 \subsubsection{Functional Requirements}
 \begin{itemize}
-	\item R2.1 The system shall display all node in the swarm
-	\item R2.2 The system shall display all containers running on a node
-	\item R2.3 The system shall display the following attributes about the Container:
+	\item R2.1 The system shall display all nodes in the swarm.
+	\item R2.2 The system shall display all services running in the swarm.
+	\item R2.3 The system shall display the following attributes about a Task:
 		\begin{itemize}
 			\item R2.3.1 Container Name (if set)
 			\item R2.3.2 Uptime
 			\item R2.3.3 Container ID
 			\item R2.3.4 State of the container (running/stopped)
-			\item R2.3.5 Image used to create the container
+			\item R2.3.5 Image used to create the task
 		\end{itemize}
-	\item R2.4 The system shall allow a user to stop a running container
-	\item R2.5 The system shall allow a user to start a stopped container
+	\item R2.4 The system shall allow a user to stop a running service
+	\item R2.5 The system shall allow a user to start a stopped service
 	\item R2.6 The system shall allow a user to upload a docker-compose file to deploy a Stack
-	\item R2.7 The system shall allow a user to remove a stopped container
+	\item R2.7 The system shall allow a user to remove a stopped service
 	\item R2.8 The system shall allow a user to destroy a Stack
 	\item R2.9 The system shall display the networks on a Node
 	\item R2.10 The system shall display the volumes on a Node
 	\item R2.11 The system shall be able to deploy images from a private repository
+	\item R2.12 The system shall display the following attributes about a Service
+	\begin{itemize}
+		\item R2.12.1 Service Name
+		\item R2.12.2 Stack (if deployed from Stack)
+		\item R2.12.3 Tasks running in the service
+		\item R2.12.4 State of the Service
+		\item R2.12.5 Image used to create the Service
+	\end{itemize}
 \end{itemize}
 
 \section{Architecture}
 \subsection{Subsystems}
 The Docks system consists of two main subsystems. The Docks API Server and the Docks UI.
+
 \subsubsection{Docks API Server}
 The Docks API Server acts as a middleman between the UI and the Docker API running on the Manager Node. The Docks API also adds a layer of authentication and session management over the Docker API.
 
@@ -122,7 +169,7 @@ Docks UI is the web interface for managing the Docker Swarm through the Docks AP
 \subsection{Domain Diagram}
 The Domain diagram gives highlights the relationship between the objects in the system.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{domain-diagram.png}
 	\caption{UML Domain Diagram for the Docks System}
@@ -131,20 +178,28 @@ The Domain diagram gives highlights the relationship between the objects in the 
 \subsection{Deployment Diagram}
 The Deployment diagram shows the architecture from the device perspective.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{deployment-diagram.png}
 	\caption{UML Deployment Diagram for the Docks System}
 \end{figure}
 
-\pagebreak
+\subsection{ERD Diagram}
+The Deployment diagram shows the database architecture for the Docks API system
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{erd.png}
+	\caption{ERD diagram for the Docks API database}
+\end{figure}
+
 \subsection{Architectural Structure}
-The User Interface uses the Model View Controller architecture. Nodes and Containers have a data model. The user interacts with the view to manipulate the data model. The view is updated when the data model retrieves data using an N-Tier architecture. The N-Tier architecture can be seen by the actor interacting with the view, the request is then delegated to the models, which in turn communicate with other objects to retrieve and set the required data from the Docker API server and Docker Swarm.
+The User Interface uses the Model View Controller architecture. Nodes and Containers have a data model. The user interacts with the view to manipulate the data model. The view is updated when the data model retrieves data using an N-Tier architecture. The 3-Tier architecture can be seen by the actor interacting with the view, the request is then delegated to the models, which in turn communicate with other objects to retrieve and set the required data from the Docker API server and Docker Swarm.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.4]{architecture-diagram.png}
-	\caption{MVC and N-Tier Architecture diagram for the Docks system}
+	\caption{MVC and 3-Tier Architecture diagram for the Docks system}
 \end{figure}
 
 

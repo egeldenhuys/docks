@@ -11,7 +11,7 @@
 	basicstyle=\ttfamily
 }
 
-\graphicspath{{images/test-policy-images/}}
+\graphicspath{{images/testing-policy/}}
 
 \hypersetup{
 	colorlinks=true,
@@ -21,7 +21,7 @@
 }
 
 %opening
-\title{Testing Policy for Docks}
+\title{Testing Policy - Docks}
 \author{TripleParity}
 \date{}
 
@@ -31,6 +31,20 @@
 \tableofcontents
 
 \section{Testing Process}
+
+\subsection{Peer Review}
+Before code can be merged into the develop branch a Pull Request has to be created.
+Three reviews are required from other developers before the pull request
+can be merged into develop.
+
+During peer reviews the following should be checked:
+\begin{itemize}
+	\item Architectural problems - will this cause problems in the future?
+	\item Compliance with requirements and design - is that what we need?
+	\item Coding Standards - proper code formatting and security standards?
+\end{itemize}
+
+\subsection{Automated Testing and Continuous Integration}
 When a commit is made to the 'docks-ui' repository on GitHub two
 processes are started:
 \begin{itemize}
@@ -38,24 +52,33 @@ processes are started:
 	\item \href{https://hub.docker.com/r/tripleparity/docks-ui/builds/}{Docker Hub} builds the repository and creates a Docker Image that can be deployed in production
 \end{itemize}
 
-\subsection{Travis CI}
+\subsubsection{Travis CI}
 The history of test reports for Travis CI can be viewed at \url{https://travis-ci.org/TripleParity/docks-ui/branches}.
-If the build was not successful it will be marked as 'failed'
+If the build was not successful it will be marked as 'failed' \\
+\\
+Travis CI is used for running tests associated with each repository. \\
+\\
+For the frontend Angular generates a set of tests for each component to verify
+that the component was successfully created. These tests run inside a
+headless (no screen required) Chrome browser.
+
+The backend also has a suite of unit tests that are executed on Travis CI.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{test_travis_branches.png}
-	\caption{Travis CI branch builds}
+	\includegraphics[scale=0.5]{travis_build_history.png}
+	\caption{Screenshot of Travis CI branch build history}
 \end{figure}
 
-\subsection{Docker Hub}
-The history of builds for Docker Hub can be viewed at
-\url{https://hub.docker.com/r/tripleparity/docks-ui/builds/}
+\subsubsection{Docker Cloud}
+Docker images are build on \href{https://cloud.docker.com/}{Docker Cloud}.
+These image can then be deployed in a production environment or for development and testing.
+Images can be viewed at \url{https://hub.docker.com/u/tripleparity/}
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{test_docker_hub.png}
-	\caption{Docker Hub builds}
+	\includegraphics[scale=0.5]{docker_cloud_build_history.png}
+	\caption{Screenshot of Docker Cloud Build History}
 \end{figure}
 
 \end{document}
