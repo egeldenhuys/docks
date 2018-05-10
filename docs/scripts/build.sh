@@ -81,9 +81,14 @@ for i in $sourceDir/*.tex; do
     echo "Building $fileNameExt to $outputDir/$fileName.pdf"
     # sudo docker run --rm -it -v "$sourceDir:/pandoc" --user="$userId:$groupId" --net=none geometalab/pandoc \
     # pandoc "$fileNameExt" -o "$outputDir/$fileName.pdf"
+
+    # Installing pdflatex is faster than pulling the 3GB pandoc image
+    # Multiple passes to avoid errors in generating the TOC
+    pdflatex -interaction=nonstopmode -halt-on-error $sourceDir/$fileNameExt
+    pdflatex -interaction=nonstopmode -halt-on-error $sourceDir/$fileNameExt
     pdflatex -interaction=nonstopmode -halt-on-error $sourceDir/$fileNameExt
 
-    # Cope pdf files to output dir
+    # Copy pdf files to output dir
     cp $sourceDir/$fileName.pdf $sourceDir/$outputDir
 done
 cd $oldPwd
