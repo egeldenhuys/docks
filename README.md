@@ -31,10 +31,10 @@ private and public keys.
   - <a href="https://travis-ci.org/TripleParity/docks-api" target="_blank">![Travis develop branch](https://img.shields.io/travis/TripleParity/docks-api/develop.svg?label="Travis%20CI:%20develop")</a>
 
 ### Documentation
-- <a href="https://github.com/TripleParity/docs-bin/blob/master/requirements.pdf" target="_blank">Requirements and Design</a>
-- <a href="https://github.com/TripleParity/docs-bin/blob/master/coding-standards.pdf" target="_blank">Coding Standards</a>
-- <a href="https://github.com/TripleParity/docs-bin/blob/master/user-manual.pdf" target="_blank">User Manual</a>
-- <a href="https://github.com/TripleParity/docs-bin/blob/master/testing-policy.pdf" target="_blank">Testing Policy</a>
+- <a href="https://tripleparity.github.io/docs-bin/requirements.pdf" target="_blank">Requirements and Design</a>
+- <a href="https://tripleparity.github.io/docs-bin/coding-standards.pdf" target="_blank">Coding Standards</a>
+- <a href="https://tripleparity.github.io/docs-bin/user-manual.pdf" target="_blank">User Manual</a>
+- <a href="https://tripleparity.github.io/docs-bin/testing-policy.pdf" target="_blank">Testing Policy</a>
 
 ## Getting Started
 1. <a href="https://docs.docker.com/install/" target="_blank">Install Docker</a>
@@ -43,7 +43,7 @@ private and public keys.
   - Note: This might take a while as Docker has to download a large amount of data
   - This will start the **Docks API** on port `8080` and the **Docks UI** on port `4200`.
 4. Browse to <a href="http://127.0.0.1:4200" target="_blank">http://127.0.0.1:4200</a> to access the web interface.
-  - For more informayion see the <a href="https://github.com/TripleParity/docs-bin/blob/master/user-manual.pdf" target="_blank">User Manual</a>
+  - For more informayion see the <a href="https://tripleparity.github.io/docs-bin/user-manual.pdf" target="_blank">User Manual</a>
 
 ## The TripleParity Team
 | Team Member | Team Member | Team Member |
