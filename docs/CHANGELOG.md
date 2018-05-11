@@ -3,6 +3,11 @@
 All significant chandes will be recorded in this document.
 These changes relate to documentation.
 
+## 2018-05-11
+### Added
+- Screenshot of running tests on Travis
+- Screenshots of peer reviews on GitHub
+
 ## 2018-05-10
 ### Added
 - Description on peer review process
