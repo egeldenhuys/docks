@@ -1,14 +1,24 @@
 version: "3"
-services:
 
+services:
   docks-api:
-    image: tripleparity/docks-api:latest
+    image: tripleparity/docks-api:release-0.0.2_nojwt
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JWT_SECRET=changeme
     ports:
       - 8080:8080
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+  docks-db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: changeme
 
   docks-ui:
-    image: tripleparity/docks-ui:latest
+    image: tripleparity/docks-ui:release-0.0.2
     ports:
       - 4200:80

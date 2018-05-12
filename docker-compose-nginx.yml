@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  nginx1:
+    image: nginxdemos/hello:0.2
+    ports:
+      - 8081:80
+    deploy:
+      mode: replicated
+      replicas: 3
