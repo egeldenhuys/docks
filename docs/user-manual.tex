@@ -5,13 +5,27 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{float}
+\usepackage{fancyvrb,newverbs,xcolor}
+
 \usepackage{listings}
 \lstset{
 	language=bash,
 	basicstyle=\ttfamily
 }
 
-\graphicspath{{images/user-manual-images/}}
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+% Back tick style from gfm
+\definecolor{Light}{gray}{.90}
+
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{
+	\colorbox{Light}{\oldtexttt{#1}}
+}
+
+\graphicspath{{images/user-manual/}{images/logo/}}
 
 \hypersetup{
 	colorlinks=true,
@@ -21,13 +35,20 @@
 }
 
 %opening
-\title{User Manual for Docks}
+\title{User Manual for Docks\\
+\large{docks-ui 0.0.2}}
+
 \author{TripleParity}
 \date{}
 
 \begin{document}
 
 \maketitle
+
+\begin{figure}[H]
+	\includegraphics[scale=0.7]{docks_round_512.png}
+	\centering
+\end{figure}
 
 \tableofcontents
 
@@ -52,89 +73,250 @@ The Docks API server has to be on a Manager Node in the Docker Swarm to be able 
 
 \section{Installation}
 \begin{enumerate}
-	\item Install Docker (\url{https://docs.docker.com/install/})
-	\item Install Docker Compose (\url{https://docs.docker.com/install/})
-	\item Make sure the Docker Daemon is running (\url{https://docs.docker.com/config/daemon/})
-	\item Clone the docks-demo repository using git (\url{https://github.com/TripleParity/docks-demo})
-	\item Run \em{sudo docker-compose up -d} in the \em{docks-demo} folder that was cloned. This will start the Docks API on port `8080` and the web server on port `4200`. To view the output of the Dock API and web server, omit the `-d` flag. This process may take a while since Docker has to download the images for Docks
-	\item Browse to \url{http://127.0.0.1:4200} to access the web interface.
-	\item To stop the Docks UI and Docks API run \em{sudo docker-compose down} in the \em{docks-demo} folder to stop the running containers (docks and docks-ui)
+	\def\labelenumi{\arabic{enumi}.}
+	\tightlist
+	\item
+	\href{https://docs.docker.com/install/}{Install Docker}
+	\item
+	Clone \texttt{https://github.com/TripleParity/docks.git} and
+	\texttt{cd} into \texttt{docks}
+	\item
+	Run \texttt{sudo\ docker-compose\ pull} to download the required
+	images
+	\item
+	Run \texttt{sudo\ docker-compose\ up\ -d\ --force-recreate} to start
+	the Docks stack
+	
+	\begin{itemize}
+		\tightlist
+		\item
+		Note: This might take a while as Docker has to download a large
+		amount of data
+		\item
+		This will start the \textbf{Docks API} on port \texttt{8080} and the
+		\textbf{Docks UI} on port \texttt{4200}.
+	\end{itemize}
+	\item
+	Initialise a swarm using \texttt{sudo\ docker\ swarm\ init}
+	\item
+	Deploy the demo stack to the swarm using
+	\texttt{sudo\ docker\ stack\ deploy\ -c\ docker-compose-nginx.yml\ nginx-demo}
+	
+	\begin{itemize}
+		\tightlist
+		\item
+		This will start 1 service with 3 tasks on port \texttt{8081}. You
+		can view them at \url{http://127.0.0.1:8081}
+		\item
+		The request will be balanced between the three tasks
+	\end{itemize}
+	\item
+	Browse to \url{http://127.0.0.1:4200} to access the web interface.
+	
+	\begin{itemize}
+		\tightlist
+		\item
+		For more information see the \href{https://tripleparity.github.io/docs-bin/user-manual.pdf}{User Manual}
+	\end{itemize}
+	\item
+	To stop the running services run the following commands:
+	
+	\begin{itemize}
+		\tightlist
+		\item
+		\texttt{sudo\ docker-compose\ down\ -v}
+		\item
+		\texttt{sudo\ docker\ stack\ rm\ nginx-demo}
+	\end{itemize}
 \end{enumerate}
 
 
 \section{Getting Started}
-When using the docks-demo repository the UI will be available at \url{http://127.0.0.1:4200} after following the Installation instructions.
+The web interface will be available at \url{http://127.0.0.1:4200} after following the Installation instructions.
+All required setup should be automatically done when starting the Docks stack.
 
-You will be presented with the following login screen:
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.5]{manual_login.png}
-	\caption{Docks Login Screen}
-\end{figure}
-
-Default credentials:
-\begin{itemize}
-	\item Username: "admin"
-	\item password: "admin"
-\end{itemize}
-
-After logging in you will be presented with the Dashboard:
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{manual_nav.png}
-	\caption{Dashboard Navigation bar}
-\end{figure}
+The home screen should display when visiting \url{http://127.0.0.1:4200}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{manual_nav_select.png}
-	\caption{Views}
-\end{figure}
-
-The containers view will show running and stopped containers.
-From this view you can start and stop existing containers or remove them.
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{manual_containers.png}
-	\caption{Running containers}
+	\includegraphics[scale=0.4]{home.png}
+	\caption{Home Screen}
 \end{figure}
 
 \section{Using the System}
-\subsection{Managing Containers}
-\subsubsection{Start and Stop container}
-From the containers view, you can start existing containers that are not running
-or stop running containers. This is useful if you no longer require the service running in the container but want to keep it around.
 
-\subsubsection{Remove containers}
-If you no longer need the service provided by the container, or the data in the container layer (data in volumes will not be deleted) then you can click on the "Remove" button to remove the container from the swarm. This cannot be undone.
+\subsection{Views}
+All information can be viewed in two ways, as a list or as cards. The list view is more compact but provides less
+information initially. This is useful for seeing a summary of all running resources. Card view provides more detail
+without extra information and therefore fewer resources can be seen at a time. Card view is useful if you
+need to see more detailed information at a quick glance.
 
-\subsection{Stacks}
+\subsection{Tasks}
+Tasks are the containers associated with a running service. On the task list view you can see the task ID and it's state. Upon clicking on a task in the list it will expand to also show the node ID the task is running on, the image the task was created from, the date created and the date update.
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{manual_stacks.png}
-	\caption{Stacks Dashboard}
+	\includegraphics[scale=0.4]{task_list.png}
+	\caption{Task list view, with one task expanded}
 \end{figure}
 
-You can paste a \emph{docker-compose.yml} file into the text box. The 'Create Stack' button will deploy the stack to the Docker Swarm. You can then manage the containers in the Containers dashboard.
+The card view displays the following information:
+\begin{itemize}
+	\tightlist
+	\item ID of the task
+	\item State of the task. Indicated by the circle and card outline colour. Green means the task is running, red indicating it has stopped
+	\item Node ID the task is running on
+	\item Last Updated
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{task_card_view.png}
+	\caption{Task card view}
+\end{figure}
+
+Cards can be clicked on to bring up a modal dialog to display the log for that service.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{task_card_modal.png}
+	\caption{Task modal after clicking on card. Displays task log}
+\end{figure}
+
+\subsection{Services}
+
+The services list view displays a list of services, which can be clicked on for an expanded view:
+\begin{itemize}
+	\tightlist
+	\item Image the service is created from
+	\item The mode of the service. \texttt{vip} - Virtual IP, the service is assigned an IP address and will distribute the requests to the replicated tasks.
+	\item The number of replicas of the service. Each replica represents a task in the swarm.
+	\item Date crated
+	\item Last updated
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{service_list.png}
+	\caption{Task list view, with one task expanded}
+\end{figure}
+
+The services card view will display the following information:
+\begin{itemize}
+	\tightlist
+	\item Service name
+	\item Image the service is created from
+	\item The mode of the service. \texttt{vip} - Virtual IP, the service is assigned an IP address and will distribute the requests to the replicated tasks.
+	\item The number of replicas of the service. Each replica represents a task in the swarm.
+	\item Last updated
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{service_card_view.png}
+	\caption{Services card view}
+\end{figure}
+
+When clicking on a Service Card the following additional information will be displayed:
+\begin{itemize}
+	\tightlist
+	\item Ports the services makes use of
+	\item Tasks associated with the service
+	\item Date Created
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{service_card_modal.png}
+	\caption{Services card view}
+\end{figure}
+
+\subsubsection{Service Operations}
+From the list view you can perform the following operations by clicking on the \texttt{Operations} button:
+\begin{itemize}
+	\tightlist
+	\item Scale the service
+	\item Update the service
+	\item View the service logs
+	\item Remove the service from the swarm
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{service_list_operations.png}
+	\caption{Service list operations}
+\end{figure}
+
+You can scale the service to change the number of replicas (tasks) of the service to run distribute on the swarm.
+This is useful if the service needs more resources to handle more requests.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{service_list_scale.png}
+	\caption{Service list operations}
+\end{figure}
+
+The service name and mode can be changed under the \texttt{Update} tab
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{service_list_update.png}
+	\caption{Service list operations}
+\end{figure}
+
+The service log can be viewed under the \texttt{Log} tab. This is an aggregate log for all the tasks
+associated with the service.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{service_list_log.png}
+	\caption{Service list operations}
+\end{figure}
+
+\subsection{Volumes}
+
+The volumes list view will display the following information when expanded:
+\begin{itemize}
+	\tightlist
+	\item Driver the volume is using.
+	\item Where the volume is mounted on the host
+	\item Scope of the volume. Can be local or swarm wide
+	\item Optional labels
+	\item Further options
+	\item Date created
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{volume_list.png}
+	\caption{Volume list view, with an expanded item}
+\end{figure}
+
+The volumes card view will display the following information:
+\begin{itemize}
+	\tightlist
+	\item Date created
+	\item Driver the volume is using.
+	\item Where the volume is mounted on the host
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{volume_card_view.png}
+	\caption{Volume list view, with an expanded item}
+\end{figure}
+
 
 \subsection{Updating Docks}
-The current process to update Docks is to run
+Docks can be updated by running \texttt{sudo docker-compose pull} and then
+\texttt{docker-compose up --force-recreate} in the \texttt{docks} cloned repository
 
-\begin{lstlisting}
-docker-compose pull
-\end{lstlisting}
-
-and then
-
-\begin{lstlisting}
-docker-compose up --force-recreate
-\end{lstlisting}
 
 \section{Troubleshooting}
 \subsection{Error: bind: address already in use}
-Another service is most likely running on port 4200 or 8080. The ports for Docks
-can be specified in the \emph{docker-compose.yml} file by changing for example
+Another service is most likely running on port \texttt{4200}, \texttt{8080} or \texttt{8081}.
+The ports for Docks and nginx-demo can be specified in the \emph{docker-compose.yml} 
+and \emph{docker-compose-yml} files.
+
+For example to run on port 9000 instead of 4200 make the following changes:
 
 \begin{lstlisting}
     ports:
@@ -145,9 +327,6 @@ to
     ports:
       - 9000:80
 \end{lstlisting}
-to run on port 9000 on the host machine.
 
-\subsection{404 Not Found}
-URLS such as \url{http://127.0.0.1:4200/index} cannot be directly visited, you first need to visit \url{http://127.0.0.1:4200}
 
 \end{document}
