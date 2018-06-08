@@ -22,7 +22,13 @@ into `develop`
 7. Use the body to explain what and why vs. how
 
 ### Branch Names
-Use the convention `my-new-feature-#62`
+Branch names should use the following conventions:
+- Lower case
+- Words hypen separated
+- Short but descriptive
+- Appended with `-#<issue_number>` if it relates to an existing issue.
+
+For example `my-new-feature-#62` or `fix-links`
 
 ### Angular Styleguide
 - The [Angular Style Guide] will be followed for [docks-ui]
