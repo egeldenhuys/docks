@@ -4,7 +4,7 @@
 This project will follow the [Gitflow Workflow].
 
 ## Pull Request Process
-1. When your feature/fix is complete create a pull request to merge your barnch
+1. When your feature/fix is complete create a pull request to merge your branch
 into `develop`
 2. Use a title that reflects the work done and a summary to give context on the change [^2].
   If it is a visual change, including a screenshot may be helpful.
@@ -24,17 +24,17 @@ into `develop`
 ### Branch Names
 Branch names should use the following conventions:
 - Lower case
-- Words hypen separated
+- Words hyphen separated
 - Short but descriptive
 - Appended with `-#<issue_number>` if it relates to an existing issue.
 
 For example `my-new-feature-#62` or `fix-links`
 
-### Angular Styleguide
+### Angular Style Guide
 - The [Angular Style Guide] will be followed for [docks-ui]
 
-### JavaScript Styleguide
-- [eslint-config-google] will be used for [docks-api]
+### JavaScript Style Guide
+- [eslint-config-google] combined with [ESLint recommended rules] will be used for [docks-api]
 
 ## Team Structure
 The team consists of 6 members and have been allocated between [docks-ui]
@@ -65,3 +65,4 @@ However please squash "Oops, fix typo" commits if they are not public history.
 [eslint-config-google]: https://github.com/google/eslint-config-google
 [docks-ui]: https://github.com/TripleParity/docks-ui
 [docks-api]: https://github.com/TripleParity/docks-api
+[ESLint recommended rules]: https://eslint.org/docs/rules/
