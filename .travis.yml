@@ -9,4 +9,4 @@ before_install:
 install:
 - docker pull egeldenhuys/umlet-docker
 script:
-- bash ./docs/scripts/build.sh $TRAVIS_BUILD_DIR/docs build
+- bash ./docs/published/scripts/build.sh $TRAVIS_BUILD_DIR/docs/published build
