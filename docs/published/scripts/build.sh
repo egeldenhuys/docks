@@ -126,3 +126,11 @@ then
   cd ..
   rm -fr docs-bin
 fi
+
+# Cleanup
+echo "Removing generated latex files..."
+rm $sourceDir/*.pdf
+rm $sourceDir/*.log
+rm $sourceDir/*.aux
+rm $sourceDir/*.out
+rm $sourceDir/*.toc
