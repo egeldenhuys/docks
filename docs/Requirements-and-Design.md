@@ -1,7 +1,38 @@
+# Requirements and Design
+
 TODO:
 - [ ] Discuss each requirement and create derived requirements
 - [ ] Decide whether to create issues spawned from this document or keep this document intact
 - [ ] Decide on input method for [Deploy Service](#deploy-service)
+- [ ] Stack file management for [Deploy stack](#deploy-stack)
+    - How will we know which stack file relates to which stack
+
+----
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=3 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+* [The Problem](#the-problem)
+* [The Solution](#the-solution)
+* [Docker Based Requirements](#docker-based-requirements)
+	* [Create](#create)
+	* [Update](#update)
+	* [Remove](#remove)
+	* [View](#view)
+* [Security Requirements](#security-requirements)
+* [Team Requirements](#team-requirements)
+* [User Management Requirements](#user-management-requirements)
+* [Design](#design)
+	* [Configuring Stacks and Services](#configuring-stacks-and-services)
+	* [Updating services outside of Docks](#updating-services-outside-of-docks)
+	* [Using existing networks in compose file](#using-existing-networks-in-compose-file)
+	* [Deploy Stack](#deploy-stack)
+	* [Deploy Service](#deploy-service)
+	* [Create Network](#create-network)
+	* [Create Volume](#create-volume)
+
+<!-- /code_chunk_output -->
 
 ----
 
@@ -17,12 +48,24 @@ The purpose of this document is to explore the requirements of the project and p
 ## The Solution
 - Expose the essential management functions using a web interface
 
+## Team Limitations
+- Lack of experience with distributed systems and technologies
+
 ## Docker Based Requirements
 ### Create
 - [ ] [Deploy stack](#deploy-stack) - 0
+    - [ ] API to deploy stack, given:
+        - Stack file
+        - Stack name
+    - [ ] Upload stack file to UI text area
+    - [ ] Deploy stack given stack file contents and stack name
 - [ ] [Deploy service](#deploy-service) - 0
+    - See TODO
 - [ ] [Create network](#create-network) - 0
-- [ ] Create volume - 1
+    - [ ] Interface to create network given:
+        - Network name
+        - Driver
+- [ ] [Create volume](#create-volume) - 1
 - [ ] Pre configured stacks, EG: - 1
     - Traefik
     - Prometheus
@@ -104,16 +147,6 @@ The purpose of this document is to explore the requirements of the project and p
 - [ ] Admin can change other's password - 0
 - [ ] Delete user - 0
 
-## [WIP] Derived component requirements
-### Docks API
-- [ ] Provide API to deploy stack, given: [(deploy stack)](#deploy-stack)
-    - Stack file
-    - Stack name
-
-### Docks UI
-- [ ] Upload stack file [(deploy stack)](#deploy-stack)
-- [ ] Create stack file using text area [(deploy stack)](#deploy-stack)
-
 ## Design
 Design and implementation discussions.
 
@@ -147,9 +180,9 @@ It will be most flexible to allow the user also to retrieve the stack file from 
 
 Error handling needs to be considered as well - the CLI is required on the host. Stack file errors need to be reported from the CLI to the user.
 
-##### Derived requirements
-- [docks-api](#docks-api)
-- [docks-ui](#docks-ui)
+#### Reverse engineering inspect info
+If we can create a compose file from the inspect info, we do not even have to store
+stack files in the database. Everything can be extracted from the swarm state.
 
 ### Deploy Service
 Due to the flexible configuration allowed for services, it would be easiest to also use stack files for deploying standalone services.
@@ -233,4 +266,30 @@ These networks can be created by another stack/service or manually using the CLI
 It will be more convenient to create the network apart from any service
 
 The problem I see with only allowing networks to be created through stack files
-is that they will be managed by compose. 
+is that they will be managed by compose. Networks managed by compose will be
+destroyed when the stack is removed or an error will be thrown if the network is in use.
+
+Therefore it is necessary to create standalone networks.
+
+The most common network I have had to create was a `bridge` or a `overlay` network.
+
+Parameters:
+- Network name
+- Driver
+
+### Create Volume
+By default volumes in the swarm will be specific to the host (using the `local` driver).
+For volumes that are shared across the swarm need to use a driver such as
+[REX-Ray](https://rexray.thecodeteam.com) that is swarm aware.
+
+Parameters:
+- Network name
+- Driver
+- Driver options
+
+Creating a local volume will create a volume that only exists on the host machine
+running the task. In most cases this is now how you would use a swarm or
+deploy a distributed application.
+
+It also does not make sense to create a standalone volume using the local
+driver, as this would be created on the manager node hosting the Docks API.
