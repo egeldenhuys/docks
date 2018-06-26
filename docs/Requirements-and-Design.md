@@ -1,11 +1,12 @@
 # Requirements and Design
 
-TODO:
+**TODO**:
 - [ ] Discuss each requirement and create derived requirements
 - [ ] Decide whether to create issues spawned from this document or keep this document intact
 - [ ] Decide on input method for [Deploy Service](#deploy-service)
 - [ ] Stack file management for [Deploy stack](#deploy-stack)
     - How will we know which stack file relates to which stack
+- [ ] Data structures for transferring stack and service configurations
 
 ----
 
@@ -51,6 +52,10 @@ The purpose of this document is to explore the requirements of the project and p
 ## Team Limitations
 - Lack of experience with distributed systems and technologies
 
+## Project Limitations
+- Designed to be deployed on a single manager node.
+    - Docks API is not a distributed system.
+
 ## Docker Based Requirements
 ### Create
 - [ ] [Deploy stack](#deploy-stack) - 0
@@ -66,13 +71,12 @@ The purpose of this document is to explore the requirements of the project and p
         - Network name
         - Driver
 - [ ] [Create volume](#create-volume) - 1
-- [ ] Pre configured stacks, EG: - 1
-    - Traefik
-    - Prometheus
-    - Postgres
-    - Mongodb
-    - Registry
-    - fail2ban?
+    - [ ] Create volume given:
+        - Volume name
+        - Driver
+        - Driver options
+- [ ] [Pre-configured Stacks](#pre-configured-stacks) - 1
+    - Delayed for now
 
 ### Update
 - [ ] Update stack - 0
@@ -259,6 +263,8 @@ Then for simple changes a form can be presented. For example quick scaling or up
     - is more user friendly as we can provide relevant constraints on data types - spinner for replicas, dropdown for mode etc
     - will require modeling the Docker API schema partially or fully. This is probably less complex than reverse engineering the schema. Although the inspect output still has to be reverse engineered for specific fields
 
+Note on user friendliness: A form is much more friendly than a free style text area.
+
 ### Create Network
 
 Some services require networks to exist before creating the service.
@@ -293,3 +299,16 @@ deploy a distributed application.
 
 It also does not make sense to create a standalone volume using the local
 driver, as this would be created on the manager node hosting the Docks API.
+
+### Pre-configured Stacks
+Some stacks I deploy often, such as traefik and in the future fail2ban.
+
+The stack configuration should be stored on the back-end and requested by the front-end
+The simplest would be to send the stack name and stack data to the back-end
+to be created instead of keeping reference to the stack configuration.
+This also allows the user to modify the stack file before deploying.
+
+Once a pre-configured stack is selected, the same interface for deploying a stack
+can be used.
+
+A nice feature would be the ability to add stacks to the list.
