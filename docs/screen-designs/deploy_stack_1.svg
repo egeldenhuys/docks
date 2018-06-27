@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Gravit.io -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   style="isolation:isolate"
+   viewBox="0 0 1280 720"
+   width="1280"
+   height="720"
+   version="1.1"
+   id="svg1006"
+   sodipodi:docname="deploy_stack_1.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="/home/evert/github/TripleParity/docks/docs/screen-designs/deploy_stack_1.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <metadata
+     id="metadata1010">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="713"
+     id="namedview1008"
+     showgrid="false"
+     inkscape:zoom="1"
+     inkscape:cx="152.39822"
+     inkscape:cy="495.3901"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1006"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:snap-nodes="false" />
+  <defs
+     id="defs943">
+    <clipPath
+       id="_clipPath_SW9xaIbCE7niFXphMZnTgHLgFvoYVH8H">
+      <rect
+         width="1280"
+         height="720"
+         id="rect940" />
+    </clipPath>
+  </defs>
+  <g
+     id="g947"
+     transform="matrix(3.78,0,0,3.78,11,6.801)">
+    <text
+       id="text945"
+       style="font-style:normal;font-weight:400;font-size:5px;font-family:'Open Sans';fill:#000000;stroke:none"
+       transform="translate(0,5.344)">deploy_stack_1</text>
+  </g>
+  <rect
+     style="fill:#e6e6e6;stroke-width:0.97075891"
+     id="rect949"
+     height="536.85199"
+     width="556"
+     y="43"
+     x="11" />
+  <g
+     id="g953"
+     transform="matrix(3.78,0,0,3.78,214.5,48.852)">
+    <text
+       id="text951"
+       style="font-style:normal;font-weight:400;font-size:7px;font-family:'Open Sans';fill:#000000;stroke:none"
+       transform="translate(0,7.482)">Deploy Stack</text>
+  </g>
+  <g
+     id="g957"
+     transform="matrix(3.78,0,0,3.78,29.967,96.746)">
+    <text
+       id="text955"
+       style="font-style:normal;font-weight:400;font-size:5px;font-family:'Open Sans';fill:#000000;stroke:none"
+       transform="translate(0,5.344)">Stack name</text>
+  </g>
+  <g
+     id="g961"
+     transform="matrix(3.78,0,0,3.78,33.874,212.352)">
+    <text
+       id="text959"
+       style="font-style:normal;font-weight:400;font-size:5px;font-family:'Open Sans';fill:#000000;stroke:none"
+       transform="translate(0,5.344)">Compose file</text>
+  </g>
+  <path
+     inkscape:connector-curvature="0"
+     id="path963"
+     style="fill:#f9f9f9;stroke:none;stroke-miterlimit:10"
+     d="m 34.874,126.727 h 195.252 c 1.656,0 3,1.344 3,3 v 29.251 c 0,1.656 -1.344,3 -3,3 H 34.874 c -1.655,0 -3,-1.344 -3,-3 v -29.251 c 0,-1.656 1.345,-3 3,-3 z" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path965"
+     style="fill:none;stroke:#333333;stroke-width:1.17703366"
+     d="m 34.874,126.727 h 195.252 c 1.656,0 3,1.344 3,3 v 29.251 c 0,1.656 -1.344,3 -3,3 H 34.874 c -1.655,0 -3,-1.344 -3,-3 v -29.251 c 0,-1.656 1.345,-3 3,-3 z" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path967"
+     style="fill:#ffffff;stroke:none"
+     d="M 34.874,247.852 H 541 c 1.656,0 3,1.345 3,3 v 251 c 0,1.656 -1.344,3 -3,3 H 34.874 c -1.655,0 -3,-1.344 -3,-3 v -251 c 0,-1.655 1.345,-3 3,-3 z" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path969"
+     style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:square;stroke-miterlimit:3"
+     d="M 34.874,247.852 H 541 c 1.656,0 3,1.345 3,3 v 251 c 0,1.656 -1.344,3 -3,3 H 34.874 c -1.655,0 -3,-1.344 -3,-3 v -251 c 0,-1.655 1.345,-3 3,-3 z" />
+  <g
+     id="g987"
+     transform="translate(37,250.852)">
+    <text
+       id="text971"
+       style="font-style:normal;font-weight:400;font-size:12px;font-family:'Fira Mono';fill:#000000;stroke:none"
+       transform="translate(0,11.22)">version: 3</text>
+    <text
+       id="text973"
+       style="font-style:normal;font-weight:400;font-size:12px;font-family:'Fira Mono';fill:#000000;stroke:none"
+       transform="translate(0,25.62)">services:</text>
+    <text
+       id="text975"
+       style="font-style:normal;font-weight:400;font-size:12px;font-family:'Fira Mono';fill:#000000;stroke:none"
+       transform="translate(21.6,40.02)">docks-ui:</text>
+    <text
+       id="text977"
+       style="font-style:normal;font-weight:400;font-size:12px;font-family:'Fira Mono';fill:#000000;stroke:none"
+       transform="translate(43.2,54.42)">image: tripleparity/docks-ui:0.0.3</text>
+    <text
+       id="text979"
+       style="font-style:normal;font-weight:400;font-size:12px;font-family:'Fira Mono';fill:#000000;stroke:none"
+       transform="translate(43.2,68.82)">ports:</text>
+    <text
+       id="text981"
+       style="font-style:normal;font-weight:400;font-size:12px;font-family:'Fira Mono';fill:#000000;stroke:none"
+       transform="translate(64.8,83.22)">- 80:80</text>
+    <text
+       id="text983"
+       style="font-style:normal;font-weight:400;font-size:12px;font-family:'Fira Mono';fill:#000000;stroke:none"
+       transform="translate(43.2,97.62)">environment:</text>
+    <text
+       id="text985"
+       style="font-style:normal;font-weight:400;font-size:12px;font-family:'Fira Mono';fill:#000000;stroke:none"
+       transform="translate(64.8,112.02)">DOCKS_API_ADDRESS=http://127.0.0.1:8080</text>
+  </g>
+  <g
+     id="g991"
+     transform="translate(33.967,507.852)">
+    <text
+       id="text989"
+       style="font-style:normal;font-weight:400;font-size:12px;font-family:'Open Sans';fill:#ff0000;stroke:none"
+       transform="translate(0,12.826)">yaml: line 22: mapping values are not allowed in this context</text>
+  </g>
+  <g
+     id="Group"
+     transform="translate(-1,-2)">
+    <path
+       inkscape:connector-curvature="0"
+       id="path993"
+       style="fill:#48d948;stroke:none;stroke-linecap:square;stroke-miterlimit:3"
+       d="m 399,534.852 h 138 c 3.863,0 7,3.137 7,7 v 20.659 c 0,3.863 -3.137,7 -7,7 H 399 c -3.863,0 -7,-3.137 -7,-7 v -20.659 c 0,-3.863 3.137,-7 7,-7 z" />
+    <g
+       id="g997"
+       transform="translate(419,541.182)">
+      <text
+         id="text995"
+         style="font-style:normal;font-weight:400;font-size:16px;font-family:'Open Sans';fill:#000000;stroke:none"
+         transform="translate(0,17.102)">Deploy Stack</text>
+    </g>
+  </g>
+  <g
+     id="g1002"
+     transform="translate(31.967,164)">
+    <text
+       id="text1000"
+       style="font-style:normal;font-weight:400;font-size:12px;font-family:'Open Sans';fill:#ff0000;stroke:none"
+       transform="translate(0,12.826)">Stack name already exists</text>
+  </g>
+  <flowRoot
+     xml:space="preserve"
+     id="flowRoot930"
+     style="fill:black;fill-opacity:1;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;line-height:1.5;letter-spacing:0px;word-spacing:0px"><flowRegion
+       id="flowRegion932"><rect
+         id="rect934"
+         width="163"
+         height="108"
+         x="348"
+         y="121" /></flowRegion><flowPara
+       id="flowPara936" /></flowRoot>  <rect
+     style="fill:#cccccc;fill-opacity:1;stroke:#000000;stroke-width:1.18846655;stroke-miterlimit:4;stroke-dasharray:none"
+     id="rect946"
+     width="21.899799"
+     height="256.41422"
+     x="521.10022"
+     y="247.58578" />
+  <path
+     sodipodi:type="star"
+     style="fill:#666666;fill-opacity:1;stroke:#000000;stroke-width:1.42866147;stroke-miterlimit:4;stroke-dasharray:none"
+     id="path948"
+     sodipodi:sides="3"
+     sodipodi:cx="531"
+     sodipodi:cy="263"
+     sodipodi:r1="11.045361"
+     sodipodi:r2="5.5226803"
+     sodipodi:arg1="-1.5707963"
+     sodipodi:arg2="-0.52359878"
+     inkscape:flatsided="false"
+     inkscape:rounded="0"
+     inkscape:randomized="0"
+     d="m 531,251.95464 4.78278,8.28402 4.78278,8.28402 -9.56556,0 -9.56556,0 4.78278,-8.28402 z"
+     inkscape:transform-center-y="-2.7613403" />
+  <path
+     sodipodi:type="star"
+     style="isolation:isolate;fill:#666666;fill-opacity:1;stroke:#000000;stroke-width:1.42866147;stroke-miterlimit:4;stroke-dasharray:none"
+     id="path948-6"
+     sodipodi:sides="3"
+     sodipodi:cx="532"
+     sodipodi:cy="495.1185"
+     sodipodi:r1="11.045361"
+     sodipodi:r2="5.5226803"
+     sodipodi:arg1="-1.5707963"
+     sodipodi:arg2="-0.52359878"
+     inkscape:flatsided="false"
+     inkscape:rounded="0"
+     inkscape:randomized="0"
+     d="m 532,484.07314 4.78278,8.28402 4.78278,8.28402 -9.56556,0 -9.56556,0 4.78278,-8.28402 z"
+     inkscape:transform-center-y="2.7613398"
+     transform="rotate(60,537.19615,492.1185)" />
+  <path
+     style="fill:#999999;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 490.90888,503.62532 h 28.8146 v -21.56675 z"
+     id="path988"
+     inkscape:connector-curvature="0" />
+</svg>
