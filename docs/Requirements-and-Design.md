@@ -16,6 +16,8 @@
 
 * [The Problem](#the-problem)
 * [The Solution](#the-solution)
+* [Team Limitations](#team-limitations)
+* [Project Limitations](#project-limitations)
 * [Docker Based Requirements](#docker-based-requirements)
 	* [Create](#create)
 	* [Update](#update)
@@ -32,6 +34,15 @@
 	* [Deploy Service](#deploy-service)
 	* [Create Network](#create-network)
 	* [Create Volume](#create-volume)
+	* [Pre-configured Stacks](#pre-configured-stacks)
+	* [Update Stack](#update-stack)
+	* [Update Service](#update-service)
+	* [Remove Stack](#remove-stack)
+	* [Remove Service](#remove-service)
+	* [Remove Network](#remove-network)
+	* [Remove Volume](#remove-volume)
+	* [View Stacks in Swarm](#view-stacks-in-swarm)
+	* [View Services in Swarm](#view-services-in-swarm)
 
 <!-- /code_chunk_output -->
 
@@ -60,18 +71,18 @@ The purpose of this document is to explore the requirements of the project and p
 ### Create
 - [ ] [Deploy stack](#deploy-stack) - 0
     - [ ] API to deploy stack, given:
-        - Stack file
+        - Stack file contents
         - Stack name
-    - [ ] Upload stack file to UI text area
-    - [ ] Deploy stack given stack file contents and stack name
+    - [ ] Deploy Stack page
 - [ ] [Deploy service](#deploy-service) - 0
-    - See TODO
-- [ ] [Create network](#create-network) - 0
-    - [ ] Interface to create network given:
+    - [ ] Data flow model
+    - [ ] Deploy Service Page
+- [ ] [Create network](#create-network) - 1
+    - [ ] Create Network Page
         - Network name
         - Driver
 - [ ] [Create volume](#create-volume) - 1
-    - [ ] Create volume given:
+    - [ ] Create Volume page
         - Volume name
         - Driver
         - Driver options
@@ -79,25 +90,29 @@ The purpose of this document is to explore the requirements of the project and p
     - Delayed for now
 
 ### Update
-- [ ] Update stack - 0
-- [ ] Update service - 0
+- [ ] [Update Stack](#update-stack) - 0
+    - [ ] Update stack page (same as deploy stack)
+- [ ] [Update service](#update-service) - 0
+    - [ ] Update service page (same as deploy service)
 
 ### Remove
-- [ ] Remove stack - 0
-- [X] Remove service - 0
-- [ ] Remove network - 0
-- [ ] Remove volume - 1
+- [ ] [Remove stack](#remove-stack) - 0
+- [X] [Remove service](#remove-service) - 0
+- [ ] [Remove network](#remove-network) - 1
+- [ ] [Remove volume](#remove-volume) - 1
 
 ### View
-- [ ] View stacks in swarm - 0
-    - Stack name
-    - Number of services
-- [X] View services in swarm - 0
-    - Service name
-    - Associated stack
-    - Replicas
-    - Image
-- [ ] View tasks in a service - 0
+- [ ] [View stacks in swarm](#view-stacks-in-swarm) - 0
+    - [ ] Stack View Page
+        - Stack name
+        - Number of services
+- [X] [View services in swarm](#view-services-in-swarm) - 0
+    - [ ] Services View Page
+        - Service name
+        - Associated stack
+        - Replicas
+        - Image
+- [ ] [View tasks in a service](#view-tasks-in-a-service) - 0
 - [X] View tasks in the swarm - 1
     - Perhaps only view the latest version of the task?
 - [ ] View networks - 1
@@ -312,3 +327,68 @@ Once a pre-configured stack is selected, the same interface for deploying a stac
 can be used.
 
 A nice feature would be the ability to add stacks to the list.
+
+### Update Stack
+Given a stack file and stack name it should be possible to update a deployed stack.
+
+The same interface can be used as Deploy Stack, except instead of checking for duplicate
+stack name, the name should already exist to avoid confusion.
+
+The back-end can provide helper functions for checking if a stack exists
+
+### Update Service
+Once a service has been deployed it should be possible to update the service specs.
+
+The same interface as Deploy Service can be used.
+In order to get the current service spec the inspect info can be reverse engineered
+into an intermediate model. The model can then be used to populate or create a form
+in the front-end.
+
+The intermediate model will then have to be converted into a form compatible with
+the Docker API. If possible the intermediate model can already be compatible with
+the Docker API.
+
+### Remove Stack
+It should be possible to remove a deployed stack from the swarm.
+The action can be initiated from the stack list view.
+
+### Remove Service
+It should be possible to remove a service that has been deployed to the swarm.
+The action can be initiated from the service list view
+
+### Remove Network
+Can be initiated from the network list view
+
+### Remove Volume
+Can be initiated from the volume list view
+
+### View Stacks in Swarm
+As with the CLI, it should be possible to view stacks that are deployed to the
+swarm.
+
+Information includes:
+- Stack name
+- Number of services
+
+On this view we can also have initiate the actions for delete and edit a stack.
+
+### View Services in Swarm
+Information that should be immediately visible:
+- Service name
+- Associated stack
+- Replicas
+- Image
+
+Actions on services:
+- Edit (includes scale, but quick edit can be added for scale)
+- Remove
+- View Tasks
+- View log
+
+### View Tasks in a Service
+Viewing all tasks in the swarm is overwhelming as historic tasks are also displayed by default.
+
+Tasks that are running under a service should be viewable.
+
+Actions on Tasks:
+- View log
