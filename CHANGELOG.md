@@ -1,6 +1,6 @@
 # Changelog
 
-All significant chandes will be recorded in this document.
+All significant changes will be recorded in this document.
 These changes relate to documentation.
 
 ## 2018-05-11
