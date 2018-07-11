@@ -16,4 +16,8 @@ travis encrypt-file github_deploy_key
 # Update docs/scripts/build.sh
 
 rm github_deploy_key
+
+# Set $DEPLOY_USERNAME
+# Set $DEPLOY_REPO
+# So that docs will be uploaded to https://github.com/$DEPLOY_USERNAME/$DEPLOY_REPO
 ```
