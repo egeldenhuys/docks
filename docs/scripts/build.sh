@@ -32,6 +32,9 @@
 
 set -e
 
+# For reproducible builds and pdflatex
+export SOURCE_DATE_EPOCH=1531310295
+
 sourceDir=$1
 outputDir=$2
 imageOutputDir="images/uml"
